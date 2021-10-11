@@ -1,0 +1,36 @@
+				User Commands			
+
+SYNOPSIS
+        python3 books.py <-t|-a> (search-term)
+        python3 books.py <-y> (start-year) (end-year)
+        python3 books.py <-y> <start-year> (none)
+        python3 books.py <-y> <none> <end-year>
+        python3 books.py <-mh>
+
+DESCRIPTION
+        This search method looks through the given database of books and authors and prints lists composed from one of three specifications. Combinations of flags are not supported. By default, it will search for the user-specified term with the title flag.
+
+OPTIONS
+
+--title -t
+
+Prints books, sorted alphabetically by title, whose titles contain the user-specified search term (case insensitive). Multiple words enclosed with quotation marks (i.e. "Jane Eyre") will be searched for as one single term. Multiple search terms not enclosed by quotations marks (i.e. Jane Eyre) will be searched for as unique terms, and the returned list will contain the results from all terms.
+
+        --title year
+                Prints books, sorted by year from oldest to newest, whose titles contain the user-specified search term (case insensitive). Multiple words enclosed with quotation marks (i.e. "Jane Eyre") will be searched for as one single term. Multiple search terms not enclosed by quotations marks (i.e. Jane Eyre) will be searched for as unique terms, and the returned list will contain the results from all terms.
+
+        --title title
+                Prints books, sorted alphabetically by title, whose titles contain the user-specified search term (case insensitive). Multiple words enclosed with quotation marks (i.e. "Jane Eyre") will be searched for as one single term. Multiple search terms not enclosed by quotations marks (i.e. Jane Eyre) will be searched for as unique terms, and the returned list will contain the results from all terms.
+
+--author -a
+
+Prints authors whose names contain the user-specified search term (case insensitive) in alphabetical order by surname, with ties broken by first name.
+
+
+--year -y
+
+Prints books published between the user-specified years (inclusive) in order of publication year. If you don't provide a start_year or end_year, all books will be returned. If only one of the two arguments is provided, it will be assumed to be the start_year and the end_year will be None. If you'd like to have the start year be None, enter none end_year.
+
+--moreHelp -mh -mH
+
+Gives detailed instructions on the different functions related to this search function.
