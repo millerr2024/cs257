@@ -67,18 +67,17 @@ for row in noc_regions_file_reader:
 
 with open('athlete.csv', 'w') as athlete_file:
     writer = csv.writer(athlete_file)
-    previously_added_athlete_ids = []
+    previously_added_athlete_ids = {}
     for athlete_row in list_of_athlete_rows:
         if (athlete_row.id_num in previously_added_athlete_ids) == False:
             writer.writerow([athlete_row.id_num, athlete_row.name, athlete_row.sex, athlete_row.height, athlete_row.weight, athlete_row.team, athlete_row.sport])
-            previously_added_athlete_ids.append(athlete_row.id_num)
+            previously_added_athlete_ids[athlete_row.id_num] = None
    
 with open('country.csv', 'w') as country_file:
     writer = csv.writer(country_file)
     for country_row in list_of_country_rows:
         writer.writerow([country_row.NOC, country_row.region, country_row.notes])
    
-
 with open('athlete_and_country_and_year.csv', 'w') as athlete_and_country_and_year:
     writer = csv.writer(athlete_and_country_and_year)
     #dictionary contains athlete id as key and year as value
@@ -93,11 +92,11 @@ with open('athlete_and_country_and_year.csv', 'w') as athlete_and_country_and_ye
 
 with open('NOC_and_team.csv', 'w') as NOC_and_team:
     writer = csv.writer(NOC_and_team)
-    previously_added_team = []
+    previously_added_team = {}
     for athlete_row in list_of_athlete_rows:
         if (athlete_row.team in previously_added_team) == False:
             writer.writerow([athlete_row.NOC, athlete_row.team])
-            previously_added_team.append(athlete_row.team)          
+            previously_added_team[athlete_row.team] = None          
 
 with open('get_city.csv', 'w') as get_city:
     writer = csv.writer(get_city)
