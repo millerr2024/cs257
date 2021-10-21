@@ -8,7 +8,7 @@ from config import user
 #Sets up argparse
 def get_parsed_arguments():
     parser = argparse.ArgumentParser(description='Helps get information from an olympics database')
-    parser.add_argument('--NOC', nargs='*',default='NoData', help='Gives information related to NOCs. If you want the names of all the athletes from a specified NOC, just type --NOC and then the NOC. If you want all the NOCs and the number of gold medals they have won, in decreasing order of the number of gold medals, type --NOC gold. If you want all the NOCs and the number of silver medals they have won, in decreasing order of the number of gold medals, type --NOC silver.')
+    parser.add_argument('--NOC', nargs='*', help='Gives information related to NOCs. If you want the names of all the athletes from a specified NOC, just type --NOC and then the NOC. If you want all the NOCs and the number of gold medals they have won, in decreasing order of the number of gold medals, type --NOC gold. If you want all the NOCs and the number of silver medals they have won, in decreasing order of the number of gold medals, type --NOC silver.')
     parsed_arguments = parser.parse_args()
     return parsed_arguments
 
@@ -20,7 +20,7 @@ def main():
         print(e)
         exit()
     arguments = get_parsed_arguments()
-    if arguments.NOC != 'NoData':
+    if arguments.NOC != None:
         index = 0
         looking_for_gold_medal = False
         looking_for_silver_medal = False
