@@ -102,9 +102,12 @@ with open('get_city.csv', 'w') as get_city:
     writer = csv.writer(get_city)
     previously_added_information = {}
     for athlete_row in list_of_athlete_rows:
-        if (athlete_row.year in previously_added_information and previously_added_information.get(athlete_row.year) == athlete_row.season) == False:
+        if (athlete_row.year not in previously_added_information) or (athlete_row.season not in previously_added_information.get(athlete_row.year)):
             writer.writerow([athlete_row.year, athlete_row.season, athlete_row.city])
-            previously_added_information[athlete_row.year] = athlete_row.season
+            if athlete_row.year in previously_added_information:
+                previously_added_information.get(athlete_row.year).append(athlete_row.season)
+            else:
+                previously_added_information[athlete_row.year] = [athlete_row.season]
 
 with open('get_medal.csv', 'w') as get_medal:
     writer = csv.writer(get_medal)
